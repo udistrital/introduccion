@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "github.com/AlexFBP/testApi/routers"
+	"github.com/udistrital/utils_oas/customerror"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -28,5 +29,6 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
+	beego.ErrorController(&customerror.CustomErrorController{})
 	beego.Run()
 }
