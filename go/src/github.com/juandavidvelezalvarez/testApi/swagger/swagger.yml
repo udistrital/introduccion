@@ -1,0 +1,271 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /rol/:
+    get:
+      tags:
+      - rol
+      description: get Rol
+      operationId: RolController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Rol'
+        "403":
+          description: ""
+    post:
+      tags:
+      - rol
+      description: create Rol
+      operationId: RolController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Rol content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Rol'
+      responses:
+        "201":
+          description: '{int} models.Rol'
+        "403":
+          description: body is empty
+  /rol/{id}:
+    get:
+      tags:
+      - rol
+      description: get Rol by id
+      operationId: RolController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Rol'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - rol
+      description: update the Rol
+      operationId: RolController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Rol content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Rol'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Rol'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - rol
+      description: delete the Rol
+      operationId: RolController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /usuario/:
+    get:
+      tags:
+      - usuario
+      description: get Usuario
+      operationId: UsuarioController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Usuario'
+        "403":
+          description: ""
+    post:
+      tags:
+      - usuario
+      description: create Usuario
+      operationId: UsuarioController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Usuario content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Usuario'
+      responses:
+        "201":
+          description: '{int} models.Usuario'
+        "403":
+          description: body is empty
+  /usuario/{id}:
+    get:
+      tags:
+      - usuario
+      description: get Usuario by id
+      operationId: UsuarioController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Usuario'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - usuario
+      description: update the Usuario
+      operationId: UsuarioController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Usuario content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Usuario'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Usuario'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - usuario
+      description: delete the Usuario
+      operationId: UsuarioController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.Rol:
+    title: Rol
+    type: object
+    properties:
+      Aplicacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      UsuarioId:
+        $ref: '#/definitions/models.Usuario'
+  models.Usuario:
+    title: Usuario
+    type: object
+    properties:
+      Apellido:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+tags:
+- name: usuario
+  description: |
+    UsuarioController operations for Usuario
+- name: rol
+  description: |
+    RolController operations for Rol
